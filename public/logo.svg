@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Açaí do Oeste">
+  <defs>
+    <clipPath id="c"><circle cx="60" cy="60" r="60"/></clipPath>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3d1349"/>
+      <stop offset="1" stop-color="#74308a"/>
+    </linearGradient>
+  </defs>
+  <g clip-path="url(#c)">
+    <rect width="120" height="120" fill="url(#sky)"/>
+    <!-- raios do sol -->
+    <g stroke="#f7cd70" stroke-width="5" stroke-linecap="round">
+      <line x1="60" y1="17" x2="60" y2="26"/>
+      <line x1="31" y1="29" x2="37" y2="36"/>
+      <line x1="89" y1="29" x2="83" y2="36"/>
+      <line x1="18" y1="53" x2="27" y2="55"/>
+      <line x1="102" y1="53" x2="93" y2="55"/>
+    </g>
+    <!-- sol se pondo -->
+    <circle cx="60" cy="66" r="27" fill="#f4b740"/>
+    <!-- frutos de açaí -->
+    <circle cx="47" cy="59" r="8.5" fill="#2a0d33"/>
+    <circle cx="61" cy="54" r="8.5" fill="#2a0d33"/>
+    <circle cx="74" cy="60" r="8" fill="#2a0d33"/>
+    <circle cx="44.5" cy="56" r="2.2" fill="#fff" opacity=".55"/>
+    <circle cx="58.5" cy="51" r="2.2" fill="#fff" opacity=".55"/>
+    <circle cx="71.5" cy="57" r="2" fill="#fff" opacity=".55"/>
+    <!-- tigela -->
+    <path d="M18 66h84c0 22-18.8 38-42 38S18 88 18 66Z" fill="#fffaf3"/>
+    <path d="M24 75h72" stroke="#5b1f6b" stroke-width="4" stroke-linecap="round"/>
+  </g>
+</svg>

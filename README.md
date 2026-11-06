@@ -35,7 +35,9 @@ Quase tudo fica em **`src/data/menu.json`**:
 - `store.deliveryFee`, `store.minOrder`, `store.paymentMethods`
 - `categories` e `products` (o campo `image` é opcional; sem ele aparece um ícone)
 
-As cores ficam em `src/index.css`, no bloco `@theme`.
+As cores ficam em `src/index.css`, no bloco `@theme`. O logo fica em `public/logo.svg` e a imagem de prévia de link em `public/og-image.png`.
+
+O guia de identidade visual da marca de demonstração está em [`docs/guia-de-marca.pdf`](docs/guia-de-marca.pdf).
 
 ## Deploy
 
