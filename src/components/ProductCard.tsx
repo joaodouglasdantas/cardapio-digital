@@ -35,7 +35,7 @@ const icons: Record<string, ReactNode> = {
   ),
 }
 
-function Placeholder({ product }: { product: Product }) {
+export function Placeholder({ product }: { product: Product }) {
   return (
     <div
       className={`relative grid h-full w-full place-items-center overflow-hidden bg-gradient-to-br ${
@@ -55,9 +55,11 @@ type Props = {
   quantity: number
   onAdd: () => void
   onRemove: () => void
+  /** Produtos montáveis (açaí) abrem o montador em vez de adicionar direto. */
+  onCustomize: () => void
 }
 
-export function ProductCard({ product, index, quantity, onAdd, onRemove }: Props) {
+export function ProductCard({ product, index, quantity, onAdd, onRemove, onCustomize }: Props) {
   const add = (e: MouseEvent<HTMLButtonElement>) => {
     flyToCart(e.currentTarget, product.image)
     onAdd()
@@ -66,7 +68,8 @@ export function ProductCard({ product, index, quantity, onAdd, onRemove }: Props
     <article
       data-reveal
       style={{ transitionDelay: `${Math.min(index, 5) * 70}ms` }}
-      className="reveal group flex gap-3 rounded-2xl bg-white p-3 shadow-sm ring-1 ring-acai-100/70 transition-shadow hover:shadow-lg"
+      onClick={product.customize ? onCustomize : undefined}
+      className={`reveal group flex gap-3 rounded-2xl bg-white p-3 shadow-sm ring-1 ring-acai-100/70 transition-shadow hover:shadow-lg ${product.customize ? 'cursor-pointer' : ''}`}
     >
       <div className="min-w-0 flex-1">
         {product.tag && (
@@ -78,7 +81,22 @@ export function ProductCard({ product, index, quantity, onAdd, onRemove }: Props
         <p className="mt-1 line-clamp-2 text-sm text-ink/60">{product.description}</p>
         <div className="mt-3 flex items-center justify-between gap-2">
           <span className="font-bold text-acai-800">{formatPrice(product.price)}</span>
-          {quantity === 0 ? (
+          {product.customize ? (
+            <button
+              onClick={(e) => {
+                e.stopPropagation()
+                onCustomize()
+              }}
+              className="relative rounded-full bg-acai-800 px-4 py-1.5 text-sm font-semibold text-white transition hover:bg-acai-700 active:scale-95"
+            >
+              Montar
+              {quantity > 0 && (
+                <span key={quantity} className="anim-bump absolute -right-2 -top-2 grid h-5 min-w-5 place-items-center rounded-full bg-sol-400 px-1 text-[11px] font-bold text-acai-950 ring-2 ring-white">
+                  {quantity}
+                </span>
+              )}
+            </button>
+          ) : quantity === 0 ? (
             <button
               onClick={add}
               className="rounded-full bg-acai-800 px-4 py-1.5 text-sm font-semibold text-white transition hover:bg-acai-700 active:scale-95"

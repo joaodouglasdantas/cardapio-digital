@@ -6,21 +6,12 @@
     "address": "Rua Exemplo, 123 · Centro, Mossoró",
     "hours": [
       {
-        "days": [
-          1,
-          2,
-          3,
-          4,
-          5
-        ],
+        "days": [1, 2, 3, 4, 5],
         "open": "14:00",
         "close": "23:00"
       },
       {
-        "days": [
-          6,
-          0
-        ],
+        "days": [6, 0],
         "open": "15:00",
         "close": "23:59"
       }
@@ -31,6 +22,50 @@
       "Pix",
       "Cartão (na entrega)",
       "Dinheiro"
+    ]
+  },
+  "complements": {
+    "free": [
+      "Granola",
+      "Banana",
+      "Leite em pó",
+      "Paçoca",
+      "Leite condensado",
+      "Amendoim",
+      "Flocos de arroz",
+      "Confete"
+    ],
+    "extras": [
+      {
+        "id": "nutella",
+        "name": "Nutella",
+        "price": 4
+      },
+      {
+        "id": "ninho",
+        "name": "Creme de ninho",
+        "price": 3
+      },
+      {
+        "id": "morango",
+        "name": "Morango",
+        "price": 2.5
+      },
+      {
+        "id": "kiwi",
+        "name": "Kiwi",
+        "price": 2.5
+      },
+      {
+        "id": "ovomaltine",
+        "name": "Ovomaltine",
+        "price": 3
+      },
+      {
+        "id": "bis",
+        "name": "Bis picado",
+        "price": 2
+      }
     ]
   },
   "categories": [
@@ -56,35 +91,47 @@
       "id": "acai-300",
       "categoryId": "acai",
       "name": "Açaí 300 ml",
-      "description": "Açaí cremoso com 3 complementos à escolha: granola, banana, leite em pó, paçoca ou leite condensado.",
+      "description": "Açaí cremoso com 3 complementos à sua escolha. Toque para montar.",
       "price": 14,
       "tag": "Mais pedido",
-      "image": "/produtos/acai-300.webp"
+      "image": "/produtos/acai-300.webp",
+      "customize": {
+        "free": 3
+      }
     },
     {
       "id": "acai-500",
       "categoryId": "acai",
       "name": "Açaí 500 ml",
-      "description": "Açaí cremoso com 4 complementos à escolha. Ideal pra dividir (ou não).",
+      "description": "Açaí cremoso com 4 complementos à sua escolha. Ideal pra dividir (ou não).",
       "price": 20,
-      "image": "/produtos/acai-500.webp"
+      "image": "/produtos/acai-500.webp",
+      "customize": {
+        "free": 4
+      }
     },
     {
       "id": "acai-700",
       "categoryId": "acai",
       "name": "Açaí 700 ml",
-      "description": "O grandão da casa, com 5 complementos e cobertura de chocolate.",
+      "description": "O grandão da casa, com 5 complementos à sua escolha.",
       "price": 26,
-      "image": "/produtos/acai-700.webp"
+      "image": "/produtos/acai-700.webp",
+      "customize": {
+        "free": 5
+      }
     },
     {
       "id": "barca",
       "categoryId": "acai",
       "name": "Barca de açaí",
-      "description": "1 litro de açaí com frutas, granola, leite condensado e Nutella. Serve 3 pessoas.",
+      "description": "1 litro de açaí com frutas, granola, leite condensado e Nutella. Serve 3 pessoas. Turbine com adicionais.",
       "price": 45,
       "tag": "Novidade",
-      "image": "/produtos/barca.webp"
+      "image": "/produtos/barca.webp",
+      "customize": {
+        "free": 0
+      }
     },
     {
       "id": "x-burguer",

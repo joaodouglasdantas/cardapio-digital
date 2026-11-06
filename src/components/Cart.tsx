@@ -1,13 +1,15 @@
 import { useState } from 'react'
 import type { CartItem, CheckoutInfo, StoreConfig } from '../types'
-import { buildWhatsAppLink, cartSubtotal, formatPrice } from '../utils'
+import { buildWhatsAppLink, cartSubtotal, describeChoices, formatPrice } from '../utils'
 
 type Props = {
   store: StoreConfig
   items: CartItem[]
-  onAdd: (id: string) => void
-  onRemove: (id: string) => void
+  open: boolean
+  onOpenChange: (open: boolean) => void
+  onChange: (key: string, delta: number) => void
   onClear: () => void
+  onSent: () => void
 }
 
 const emptyInfo = (payment: string): CheckoutInfo => ({
@@ -19,8 +21,7 @@ const emptyInfo = (payment: string): CheckoutInfo => ({
   notes: '',
 })
 
-export function Cart({ store, items, onAdd, onRemove, onClear }: Props) {
-  const [open, setOpen] = useState(false)
+export function Cart({ store, items, open, onOpenChange: setOpen, onChange, onClear, onSent }: Props) {
   const [info, setInfo] = useState<CheckoutInfo>(emptyInfo(store.paymentMethods[0]))
 
   const count = items.reduce((n, i) => n + i.quantity, 0)
@@ -74,16 +75,19 @@ export function Cart({ store, items, onAdd, onRemove, onClear }: Props) {
 
             <div className="flex-1 space-y-5 overflow-y-auto px-5 py-4">
               <ul className="space-y-3">
-                {items.map(({ product, quantity }) => (
-                  <li key={product.id} className="flex items-center justify-between gap-3">
+                {items.map((item) => (
+                  <li key={item.key} className="flex items-center justify-between gap-3">
                     <div className="min-w-0">
-                      <p className="truncate font-medium">{product.name}</p>
-                      <p className="text-sm text-ink/60">{formatPrice(product.price * quantity)}</p>
+                      <p className="truncate font-medium">{item.product.name}</p>
+                      {(item.free.length > 0 || item.extras.length > 0) && (
+                        <p className="text-xs leading-snug text-ink/60">{describeChoices(item)}</p>
+                      )}
+                      <p className="text-sm font-semibold text-acai-800">{formatPrice(item.unitPrice * item.quantity)}</p>
                     </div>
-                    <div className="flex items-center gap-1 rounded-full bg-white p-1 ring-1 ring-acai-100">
-                      <button onClick={() => onRemove(product.id)} className="grid h-7 w-7 place-items-center rounded-full font-bold text-acai-800">−</button>
-                      <span className="w-6 text-center text-sm font-bold">{quantity}</span>
-                      <button onClick={() => onAdd(product.id)} className="grid h-7 w-7 place-items-center rounded-full bg-acai-800 font-bold text-white">+</button>
+                    <div className="flex shrink-0 items-center gap-1 rounded-full bg-white p-1 ring-1 ring-acai-100">
+                      <button onClick={() => onChange(item.key, -1)} aria-label={`Remover um ${item.product.name}`} className="grid h-7 w-7 place-items-center rounded-full font-bold text-acai-800">−</button>
+                      <span key={item.quantity} className="anim-bump w-6 text-center text-sm font-bold">{item.quantity}</span>
+                      <button onClick={() => onChange(item.key, 1)} aria-label={`Adicionar mais um ${item.product.name}`} className="grid h-7 w-7 place-items-center rounded-full bg-acai-800 font-bold text-white">+</button>
                     </div>
                   </li>
                 ))}
@@ -119,7 +123,7 @@ export function Cart({ store, items, onAdd, onRemove, onClear }: Props) {
                 {info.payment === 'Dinheiro' && (
                   <input className={input} placeholder="Troco para quanto? (opcional)" value={info.change} onChange={(e) => set('change', e.target.value)} />
                 )}
-                <textarea className={input} rows={2} placeholder="Observações (ex.: sem cebola, complementos do açaí)" value={info.notes} onChange={(e) => set('notes', e.target.value)} />
+                <textarea className={input} rows={2} placeholder="Observações (ex.: sem cebola, troco, ponto de referência)" value={info.notes} onChange={(e) => set('notes', e.target.value)} />
               </div>
             </div>
 
@@ -135,6 +139,7 @@ export function Cart({ store, items, onAdd, onRemove, onClear }: Props) {
                 href={belowMin || missing ? undefined : buildWhatsAppLink(store, items, info)}
                 target="_blank"
                 rel="noreferrer"
+                onClick={onSent}
                 aria-disabled={Boolean(belowMin || missing)}
                 className={`mt-3 flex w-full items-center justify-center gap-2 rounded-2xl py-3.5 text-base font-bold transition ${
                   belowMin || missing
