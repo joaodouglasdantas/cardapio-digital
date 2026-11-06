@@ -5,6 +5,7 @@ import { Header } from './components/Header'
 import { CategoryTabs } from './components/CategoryTabs'
 import { ProductCard } from './components/ProductCard'
 import { Cart } from './components/Cart'
+import { observeReveal } from './animations'
 
 const store = data.store as StoreConfig
 const categories = data.categories as Category[]
@@ -32,6 +33,9 @@ export default function App() {
       /* navegador sem armazenamento: o carrinho só não fica salvo */
     }
   }, [cart])
+
+  // anima os cards quando entram na tela
+  useEffect(() => observeReveal(), [search])
 
   // destaca a categoria visível enquanto a pessoa rola a página
   useEffect(() => {
@@ -89,8 +93,8 @@ export default function App() {
             <section key={cat.id} id={cat.id} ref={(el) => { sections.current[cat.id] = el }} className="pt-6">
               <h2 className="mb-3 font-display text-2xl font-bold text-acai-900">{cat.name}</h2>
               <div className="grid gap-3 sm:grid-cols-2">
-                {list.map((p) => (
-                  <ProductCard key={p.id} product={p} quantity={cart[p.id] ?? 0} onAdd={() => add(p.id)} onRemove={() => remove(p.id)} />
+                {list.map((p, i) => (
+                  <ProductCard key={p.id} product={p} index={i} quantity={cart[p.id] ?? 0} onAdd={() => add(p.id)} onRemove={() => remove(p.id)} />
                 ))}
               </div>
             </section>

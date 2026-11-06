@@ -33,3 +33,33 @@ body {
 .no-scrollbar {
   scrollbar-width: none;
 }
+
+/* ---------- animações ---------- */
+@keyframes up { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+@keyframes pop { 0% { opacity: 0; transform: scale(.4) rotate(-25deg); } 70% { transform: scale(1.08) rotate(4deg); } 100% { opacity: 1; transform: none; } }
+@keyframes float { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(-10px, 12px); } }
+@keyframes sunrise { from { transform: translateY(120px); } to { transform: none; } }
+@keyframes pulse-dot { 0%, 100% { box-shadow: 0 0 0 0 rgba(6, 78, 59, .5); } 50% { box-shadow: 0 0 0 5px rgba(6, 78, 59, 0); } }
+@keyframes bump { 0% { transform: scale(1); } 40% { transform: scale(1.45); } 100% { transform: scale(1); } }
+@keyframes slide-up { from { transform: translateY(110%); } to { transform: none; } }
+@keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes sheet { 0% { transform: translateY(100%); } 70% { transform: translateY(-2%); } 100% { transform: none; } }
+
+.anim-up { animation: up .6s cubic-bezier(.2, .8, .2, 1) both; }
+.anim-pop { animation: pop .8s cubic-bezier(.2, .8, .2, 1) both; }
+.anim-float { animation: float 9s ease-in-out infinite; }
+.anim-float-slow { animation: float 13s ease-in-out infinite reverse; }
+.anim-sunrise { animation: sunrise 1.4s .2s cubic-bezier(.2, .9, .3, 1) both; }
+.anim-pulse { animation: pulse-dot 1.8s ease-in-out infinite; }
+.anim-bump { animation: bump .45s cubic-bezier(.3, 1.6, .5, 1); }
+.anim-slide-up { animation: slide-up .5s cubic-bezier(.2, .9, .3, 1.15) both; }
+.anim-fade { animation: fade .25s ease both; }
+.anim-sheet { animation: sheet .55s cubic-bezier(.2, .9, .3, 1) both; }
+
+.reveal { opacity: 0; transform: translateY(24px) scale(.98); transition: opacity .55s ease, transform .55s cubic-bezier(.2, .8, .2, 1), box-shadow .2s; }
+.reveal.is-visible { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .reveal { opacity: 1; transform: none; }
+}

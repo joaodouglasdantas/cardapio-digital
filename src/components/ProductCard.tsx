@@ -1,6 +1,7 @@
-import type { ReactNode } from 'react'
+import type { MouseEvent, ReactNode } from 'react'
 import type { Product } from '../types'
 import { formatPrice } from '../utils'
+import { flyToCart } from '../animations'
 
 const palettes: Record<string, string> = {
   acai: 'from-acai-800 to-acai-700',
@@ -50,14 +51,23 @@ function Placeholder({ product }: { product: Product }) {
 
 type Props = {
   product: Product
+  index: number
   quantity: number
   onAdd: () => void
   onRemove: () => void
 }
 
-export function ProductCard({ product, quantity, onAdd, onRemove }: Props) {
+export function ProductCard({ product, index, quantity, onAdd, onRemove }: Props) {
+  const add = (e: MouseEvent<HTMLButtonElement>) => {
+    flyToCart(e.currentTarget, product.image)
+    onAdd()
+  }
   return (
-    <article className="flex gap-3 rounded-2xl bg-white p-3 shadow-sm ring-1 ring-acai-100/70">
+    <article
+      data-reveal
+      style={{ transitionDelay: `${Math.min(index, 5) * 70}ms` }}
+      className="reveal group flex gap-3 rounded-2xl bg-white p-3 shadow-sm ring-1 ring-acai-100/70 transition-shadow hover:shadow-lg"
+    >
       <div className="min-w-0 flex-1">
         {product.tag && (
           <span className="mb-1 inline-block rounded-full bg-sol-100 px-2 py-0.5 text-[11px] font-semibold text-amber-800">
@@ -70,7 +80,7 @@ export function ProductCard({ product, quantity, onAdd, onRemove }: Props) {
           <span className="font-bold text-acai-800">{formatPrice(product.price)}</span>
           {quantity === 0 ? (
             <button
-              onClick={onAdd}
+              onClick={add}
               className="rounded-full bg-acai-800 px-4 py-1.5 text-sm font-semibold text-white transition hover:bg-acai-700 active:scale-95"
             >
               Adicionar
@@ -84,9 +94,9 @@ export function ProductCard({ product, quantity, onAdd, onRemove }: Props) {
               >
                 −
               </button>
-              <span className="w-6 text-center text-sm font-bold">{quantity}</span>
+              <span key={quantity} className="anim-bump w-6 text-center text-sm font-bold">{quantity}</span>
               <button
-                onClick={onAdd}
+                onClick={add}
                 aria-label={`Adicionar mais um ${product.name}`}
                 className="grid h-7 w-7 place-items-center rounded-full bg-acai-800 font-bold text-white shadow-sm active:scale-90"
               >
@@ -98,7 +108,7 @@ export function ProductCard({ product, quantity, onAdd, onRemove }: Props) {
       </div>
       <div className="h-24 w-24 shrink-0 overflow-hidden rounded-xl">
         {product.image ? (
-          <img src={product.image} alt={product.name} loading="lazy" className="h-full w-full object-cover" />
+          <img src={product.image} alt={product.name} loading="lazy" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" />
         ) : (
           <Placeholder product={product} />
         )}

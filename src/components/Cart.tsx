@@ -41,13 +41,13 @@ export function Cart({ store, items, onAdd, onRemove, onClear }: Props) {
   return (
     <>
       {/* barra flutuante */}
-      <div className="fixed inset-x-0 bottom-0 z-30 p-4 pb-[max(1rem,env(safe-area-inset-bottom))]">
+      <div className="anim-slide-up fixed inset-x-0 bottom-0 z-30 p-4 pb-[max(1rem,env(safe-area-inset-bottom))]">
         <button
           onClick={() => setOpen(true)}
           className="mx-auto flex w-full max-w-3xl items-center justify-between rounded-2xl bg-acai-900 px-5 py-4 text-white shadow-2xl transition active:scale-[0.98]"
         >
           <span className="flex items-center gap-3">
-            <span className="grid h-7 min-w-7 place-items-center rounded-full bg-sol-400 px-2 text-sm font-bold text-acai-950">
+            <span data-cart-badge key={count} className="anim-bump grid h-7 min-w-7 place-items-center rounded-full bg-sol-400 px-2 text-sm font-bold text-acai-950">
               {count}
             </span>
             <span className="font-semibold">Ver sacola</span>
@@ -58,12 +58,12 @@ export function Cart({ store, items, onAdd, onRemove, onClear }: Props) {
 
       {/* gaveta */}
       {open && (
-        <div className="fixed inset-0 z-40 flex items-end justify-center bg-black/50 sm:items-center" onClick={() => setOpen(false)}>
+        <div className="anim-fade fixed inset-0 z-40 flex items-end justify-center bg-black/50 sm:items-center" onClick={() => setOpen(false)}>
           <div
             role="dialog"
             aria-label="Sua sacola"
             onClick={(e) => e.stopPropagation()}
-            className="flex max-h-[92vh] w-full max-w-lg flex-col overflow-hidden rounded-t-3xl bg-cream sm:rounded-3xl"
+            className="anim-sheet flex max-h-[92vh] w-full max-w-lg flex-col overflow-hidden rounded-t-3xl bg-cream sm:rounded-3xl"
           >
             <div className="flex items-center justify-between border-b border-acai-100 px-5 py-4">
               <h2 className="font-display text-xl font-bold text-acai-900">Sua sacola</h2>
