@@ -5,36 +5,159 @@
     "whatsapp": "5584900000000",
     "address": "Rua Exemplo, 123 · Centro, Mossoró",
     "hours": [
-      { "days": [1, 2, 3, 4, 5], "open": "14:00", "close": "23:00" },
-      { "days": [6, 0], "open": "15:00", "close": "23:59" }
+      {
+        "days": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "open": "14:00",
+        "close": "23:00"
+      },
+      {
+        "days": [
+          6,
+          0
+        ],
+        "open": "15:00",
+        "close": "23:59"
+      }
     ],
     "deliveryFee": 5,
     "minOrder": 15,
-    "paymentMethods": ["Pix", "Cartão (na entrega)", "Dinheiro"]
+    "paymentMethods": [
+      "Pix",
+      "Cartão (na entrega)",
+      "Dinheiro"
+    ]
   },
   "categories": [
-    { "id": "acai", "name": "Açaí" },
-    { "id": "lanches", "name": "Lanches" },
-    { "id": "porcoes", "name": "Porções" },
-    { "id": "bebidas", "name": "Bebidas" }
+    {
+      "id": "acai",
+      "name": "Açaí"
+    },
+    {
+      "id": "lanches",
+      "name": "Lanches"
+    },
+    {
+      "id": "porcoes",
+      "name": "Porções"
+    },
+    {
+      "id": "bebidas",
+      "name": "Bebidas"
+    }
   ],
   "products": [
-    { "id": "acai-300", "categoryId": "acai", "name": "Açaí 300 ml", "description": "Açaí cremoso com 3 complementos à escolha: granola, banana, leite em pó, paçoca ou leite condensado.", "price": 14, "tag": "Mais pedido" },
-    { "id": "acai-500", "categoryId": "acai", "name": "Açaí 500 ml", "description": "Açaí cremoso com 4 complementos à escolha. Ideal pra dividir (ou não).", "price": 20 },
-    { "id": "acai-700", "categoryId": "acai", "name": "Açaí 700 ml", "description": "O grandão da casa, com 5 complementos e cobertura de chocolate.", "price": 26 },
-    { "id": "barca", "categoryId": "acai", "name": "Barca de açaí", "description": "1 litro de açaí com frutas, granola, leite condensado e Nutella. Serve 3 pessoas.", "price": 45, "tag": "Novidade" },
-
-    { "id": "x-burguer", "categoryId": "lanches", "name": "X-Burguer", "description": "Pão brioche, hambúrguer artesanal 120 g, queijo e molho da casa.", "price": 18 },
-    { "id": "x-tudo", "categoryId": "lanches", "name": "X-Tudo do Oeste", "description": "Hambúrguer 120 g, queijo, presunto, ovo, bacon, calabresa, alface e tomate.", "price": 26, "tag": "Mais pedido" },
-    { "id": "misto", "categoryId": "lanches", "name": "Misto quente", "description": "Pão de forma na chapa com queijo e presunto.", "price": 9 },
-    { "id": "tapioca", "categoryId": "lanches", "name": "Tapioca de carne de sol", "description": "Tapioca recheada com carne de sol desfiada e queijo coalho.", "price": 16 },
-
-    { "id": "batata", "categoryId": "porcoes", "name": "Batata frita", "description": "Porção de 400 g com cheddar e bacon.", "price": 22 },
-    { "id": "macaxeira", "categoryId": "porcoes", "name": "Macaxeira frita", "description": "Porção de 400 g, crocante por fora e macia por dentro.", "price": 18 },
-    { "id": "coalho", "categoryId": "porcoes", "name": "Queijo coalho na brasa", "description": "6 espetinhos de queijo coalho com melaço.", "price": 20, "tag": "Promoção" },
-
-    { "id": "suco", "categoryId": "bebidas", "name": "Suco natural 500 ml", "description": "Acerola, cajá, goiaba ou maracujá.", "price": 8 },
-    { "id": "refri-lata", "categoryId": "bebidas", "name": "Refrigerante lata", "description": "350 ml. Consulte os sabores.", "price": 6 },
-    { "id": "agua", "categoryId": "bebidas", "name": "Água mineral", "description": "500 ml, com ou sem gás.", "price": 3 }
+    {
+      "id": "acai-300",
+      "categoryId": "acai",
+      "name": "Açaí 300 ml",
+      "description": "Açaí cremoso com 3 complementos à escolha: granola, banana, leite em pó, paçoca ou leite condensado.",
+      "price": 14,
+      "tag": "Mais pedido",
+      "image": "/produtos/acai-300.webp"
+    },
+    {
+      "id": "acai-500",
+      "categoryId": "acai",
+      "name": "Açaí 500 ml",
+      "description": "Açaí cremoso com 4 complementos à escolha. Ideal pra dividir (ou não).",
+      "price": 20,
+      "image": "/produtos/acai-500.webp"
+    },
+    {
+      "id": "acai-700",
+      "categoryId": "acai",
+      "name": "Açaí 700 ml",
+      "description": "O grandão da casa, com 5 complementos e cobertura de chocolate.",
+      "price": 26,
+      "image": "/produtos/acai-700.webp"
+    },
+    {
+      "id": "barca",
+      "categoryId": "acai",
+      "name": "Barca de açaí",
+      "description": "1 litro de açaí com frutas, granola, leite condensado e Nutella. Serve 3 pessoas.",
+      "price": 45,
+      "tag": "Novidade",
+      "image": "/produtos/barca.webp"
+    },
+    {
+      "id": "x-burguer",
+      "categoryId": "lanches",
+      "name": "X-Burguer",
+      "description": "Pão brioche, hambúrguer artesanal 120 g, queijo e molho da casa.",
+      "price": 18,
+      "image": "/produtos/x-burguer.webp"
+    },
+    {
+      "id": "x-tudo",
+      "categoryId": "lanches",
+      "name": "X-Tudo do Oeste",
+      "description": "Hambúrguer 120 g, queijo, presunto, ovo, bacon, calabresa, alface e tomate.",
+      "price": 26,
+      "tag": "Mais pedido"
+    },
+    {
+      "id": "misto",
+      "categoryId": "lanches",
+      "name": "Misto quente",
+      "description": "Pão de forma na chapa com queijo e presunto.",
+      "price": 9
+    },
+    {
+      "id": "tapioca",
+      "categoryId": "lanches",
+      "name": "Tapioca de carne de sol",
+      "description": "Tapioca recheada com carne de sol desfiada e queijo coalho.",
+      "price": 16
+    },
+    {
+      "id": "batata",
+      "categoryId": "porcoes",
+      "name": "Batata frita",
+      "description": "Porção de 400 g com cheddar e bacon.",
+      "price": 22
+    },
+    {
+      "id": "macaxeira",
+      "categoryId": "porcoes",
+      "name": "Macaxeira frita",
+      "description": "Porção de 400 g, crocante por fora e macia por dentro.",
+      "price": 18
+    },
+    {
+      "id": "coalho",
+      "categoryId": "porcoes",
+      "name": "Queijo coalho na brasa",
+      "description": "6 espetinhos de queijo coalho com melaço.",
+      "price": 20,
+      "tag": "Promoção"
+    },
+    {
+      "id": "suco",
+      "categoryId": "bebidas",
+      "name": "Suco natural 500 ml",
+      "description": "Acerola, cajá, goiaba ou maracujá.",
+      "price": 8
+    },
+    {
+      "id": "refri-lata",
+      "categoryId": "bebidas",
+      "name": "Refrigerante lata",
+      "description": "350 ml. Consulte os sabores.",
+      "price": 6
+    },
+    {
+      "id": "agua",
+      "categoryId": "bebidas",
+      "name": "Água mineral",
+      "description": "500 ml, com ou sem gás.",
+      "price": 3
+    }
   ]
 }
