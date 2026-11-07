@@ -201,7 +201,8 @@
       "categoryId": "bebidas",
       "name": "Suco natural 500 ml",
       "description": "Acerola, cajá, goiaba ou maracujá.",
-      "price": 8
+      "price": 8,
+      "image": "/produtos/suco.webp"
     },
     {
       "id": "refri-lata",
