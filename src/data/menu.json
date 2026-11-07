@@ -193,7 +193,8 @@
       "name": "Queijo coalho na brasa",
       "description": "6 espetinhos de queijo coalho com melaço.",
       "price": 20,
-      "tag": "Promoção"
+      "tag": "Promoção",
+      "image": "/produtos/coalho.webp"
     },
     {
       "id": "suco",
