@@ -59,6 +59,9 @@ body {
 .reveal { opacity: 0; transform: translateY(24px) scale(.98); transition: opacity .55s ease, transform .55s cubic-bezier(.2, .8, .2, 1), box-shadow .2s; }
 .reveal.is-visible { opacity: 1; transform: none; }
 
+@keyframes kenburns { from { transform: scale(1.12); } to { transform: scale(1); } }
+.anim-kenburns { animation: kenburns 8s ease-out both; }
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
   .reveal { opacity: 1; transform: none; }
