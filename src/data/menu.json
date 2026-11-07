@@ -6,12 +6,21 @@
     "address": "Rua Exemplo, 123 · Centro, Mossoró",
     "hours": [
       {
-        "days": [1, 2, 3, 4, 5],
+        "days": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
         "open": "14:00",
         "close": "23:00"
       },
       {
-        "days": [6, 0],
+        "days": [
+          6,
+          0
+        ],
         "open": "15:00",
         "close": "23:59"
       }
@@ -147,7 +156,8 @@
       "name": "X-Tudo do Oeste",
       "description": "Hambúrguer 120 g, queijo, presunto, ovo, bacon, calabresa, alface e tomate.",
       "price": 26,
-      "tag": "Mais pedido"
+      "tag": "Mais pedido",
+      "image": "/produtos/x-tudo.webp"
     },
     {
       "id": "misto",
