@@ -3,11 +3,11 @@ import { useEffect, useState } from 'react'
 export type HelperStage = 'welcome' | 'builder' | 'added' | 'cart' | 'sent'
 
 const MESSAGES: Record<HelperStage, string> = {
-  welcome: 'Oi! Eu sou o Açaizinho 💜 Toca num açaí pra montar do seu jeito!',
-  builder: 'Escolhe seus complementos grátis. Os adicionais têm um custinho a mais 😉',
+  welcome: 'Oi! Eu sou o Açaizinho Toca num açaí pra montar do seu jeito!',
+  builder: 'Escolhe seus complementos grátis. Os adicionais têm um custinho a mais',
   added: 'Boa escolha! Sua sacola tá aqui embaixo. Toca nela quando terminar.',
   cart: 'Preenche nome e endereço que o pedido vai direto pro WhatsApp!',
-  sent: 'Pedido enviado! Agora é só esperar o açaí chegar 😋',
+  sent: 'Pedido enviado! Agora é só esperar o açaí chegar',
 }
 
 const HIDE_KEY = 'cardapio-helper-off'

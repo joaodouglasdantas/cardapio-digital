@@ -1,4 +1,5 @@
 import { useState, type MouseEvent } from 'react'
+import { Check } from 'lucide-react'
 import type { Complements, Product } from '../types'
 import { formatPrice } from '../utils'
 import { flyToCart } from '../animations'
@@ -83,7 +84,7 @@ export function AcaiBuilder({ product, complements, onClose, onConfirm }: Props)
                   const selected = free.includes(name)
                   return (
                     <button key={name} onClick={() => toggleFree(name)} disabled={!selected && full} className={chip(selected, !selected && full)}>
-                      {selected && '✓ '}
+                      {selected && <Check aria-hidden className="-ml-0.5 mr-1 inline h-3.5 w-3.5 -translate-y-px" strokeWidth={3} />}
                       {name}
                     </button>
                   )
